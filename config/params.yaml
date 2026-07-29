@@ -1,0 +1,29 @@
+vision_control_node:
+  ros__parameters:
+    # --- Control PID ---
+    Kp: 0.003
+    Kd: 0.004
+    Ki: 0.0
+    linear_speed: 0.12
+    max_angular_speed: 1.0
+
+    # --- Partición ROI ---
+    roi_split: 0.6              # 60% superior (obstáculo) / 40% inferior (línea)
+    red_area_threshold: 6000    # px^2 mínimos para disparar la FSM de evasión
+    line_presence_threshold: 0.005
+
+    # --- Resolución de la cámara visual ---
+    resize_width: 320
+    resize_height: 240
+    publish_fps: true
+    fps_smoothing: 0.85
+
+    # --- Umbral HSV: línea blanca ---
+    hsv_line_low:  [0, 0, 180]
+    hsv_line_high: [180, 60, 255]
+
+    # --- Umbral HSV: obstáculo rojo (dos rangos por wrap-around de Hue) ---
+    hsv_red_low1:  [0, 120, 70]
+    hsv_red_high1: [10, 255, 255]
+    hsv_red_low2:  [170, 120, 70]
+    hsv_red_high2: [180, 255, 255]
